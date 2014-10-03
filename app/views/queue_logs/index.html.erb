@@ -1,0 +1,26 @@
+<h1>CDR Queues</h1>
+<table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Codigo Chamada</th>
+        <th>Fila Chamada</th>
+        <th>Agent</th>
+        <th>Event</th>
+        <th>Origem</th>
+      </tr> 
+    </thead>
+
+    <tbody>
+     <% @queue_logs.each do |t| %>
+        <tr>
+          <td><%= t.time %></td>
+          <td><%= t.callid %></td>
+          <td><%= t.queuename %></td>
+          <td><%= t.agent %></td>
+          <td><%= t.event %></td>
+          <td><%= t.data2 %></td>        
+        </tr>
+      <% end %>
+    </tbody>
+</table>

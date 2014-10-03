@@ -1,0 +1,2 @@
+module QueueLogsHelper
+end

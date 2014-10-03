@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: MyString
+  callid: MyString
+  queuename: MyString
+  agent: MyString
+  event: MyString
+  data1: MyString
+  data2: MyString
+  data3: MyString
+  data4: MyString
+  data5: MyString
+
+two:
+  time: MyString
+  callid: MyString
+  queuename: MyString
+  agent: MyString
+  event: MyString
+  data1: MyString
+  data2: MyString
+  data3: MyString
+  data4: MyString
+  data5: MyString
