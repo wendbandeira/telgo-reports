@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'foundation-rails'
 gem 'binding_of_caller'
+gem 'will_paginate', '3.0.5'
 
 group :development do
   gem 'better_errors'
