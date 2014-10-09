@@ -10,6 +10,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'foundation-rails'
+gem 'binding_of_caller'
+
+group :development do
+  gem 'better_errors'
+end
 
 group :doc do
   gem 'sdoc', require: false
