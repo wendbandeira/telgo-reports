@@ -1,4 +1,8 @@
 <h1>CDR Queues</h1>
+<%= form_tag queue_logs_index_path, method: 'get' do %>
+
+<% end %>
+
 <table>
     <thead>
       <tr>
@@ -14,7 +18,7 @@
     <tbody>
      <% @queue_logs.each do |t| %>
         <tr>
-          <td><%= t.time %></td>
+          <td><%= t.time.to_datetime.strftime("%d-%m-%Y - %H:%M" ) %></td>
           <td><%= t.callid %></td>
           <td><%= t.queuename %></td>
           <td><%= t.agent %></td>
