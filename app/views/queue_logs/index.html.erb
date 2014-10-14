@@ -1,31 +1,40 @@
 <h1>CDR Queues</h1>
 
-<%= form_tag queue_logs_index_path, method: 'get' do %>
-<% end %>
+<div class='small-2 column' id='content'>
+  <%= form_tag queue_logs_index_path, method: 'get' do %>
+    <label>Data Inicial</label>
+      <%= date_field_tag :datainicial, params[:datainicial] %>
+    <label>Data Final</label>
+      <%= date_field_tag :datafinal, params[:datafinal] %>
+      <%= submit_tag "Buscar", name: nil, class: 'button' %>
+  <% end %>
+</div>
 
-<table>
-    <thead>
-      <tr>
-        <th>Data</th>
-        <th>Codigo Chamada</th>
-        <th>Fila Chamada</th>
-        <th>Agent</th>
-        <th>Event</th>
-        <th>Origem</th>
-      </tr> 
-    </thead>
-
-    <tbody>
-     <% @queue_logs.each do |t| %>
+<div class='small-8 column' id='content'>
+  <table>
+      <thead>
         <tr>
-          <td><%= t.time.to_datetime.strftime("%d-%m-%Y - %H:%M" ) %></td>
-          <td><%= t.callid %></td>
-          <td><%= t.queuename %></td>
-          <td><%= t.agent %></td>
-          <td><%= t.event %></td>
-          <td><%= t.data2 %></td>        
-        </tr>
-      <% end %>
-    </tbody>
-</table>
-<%= will_paginate @queue_log, previous_label: 'Próx', next_label: 'Ant' %>
+          <th>Data</th>
+          <th>Codigo Chamada</th>
+          <th>Fila Chamada</th>
+          <th>Agent</th>
+          <th>Event</th>
+          <th>Origem</th>
+        </tr> 
+      </thead>
+
+      <tbody>
+       <% @queue_logs.each do |t| %>
+          <tr>
+            <td><%= t.time.to_datetime.strftime("%d-%m-%Y - %H:%M" ) %></td>
+            <td><%= t.callid %></td>
+            <td><%= t.queuename %></td>
+            <td><%= t.agent %></td>
+            <td><%= t.event %></td>
+            <td><%= t.data2 %></td>        
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <%= will_paginate @queue_log, previous_label: 'Próx', next_label: 'Ant' %>
+</div>
