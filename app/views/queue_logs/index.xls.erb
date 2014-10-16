@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
+        <Cell><Data ss:Type="String">Codigo Chamada</Data></Cell>
+        <Cell><Data ss:Type="String">Fila Chamada</Data></Cell>
+        <Cell><Data ss:Type="String">Agente</Data></Cell>
+        <Cell><Data ss:Type="String">Evento</Data></Cell>
+        <Cell><Data ss:Type="String">Origem</Data></Cell>
+      </Row>
+    <% @queue_log.each do |queue| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= queue.time.to_datetime.strftime("%d-%m-%Y - %H:%M" ) %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= queue.callid %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.queuename %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.agent %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.event %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.data2 %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
