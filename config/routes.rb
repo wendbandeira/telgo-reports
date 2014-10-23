@@ -1,5 +1,5 @@
 TelgoReports::Application.routes.draw do
-  get "queue_logs/index"
-  get "queue_logs/show"
+
+  resources :queue_logs
   root 'home#index'
 end

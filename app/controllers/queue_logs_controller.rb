@@ -1,14 +1,11 @@
 class QueueLogsController < ApplicationController
 
   def index
-    @queue_logs = QueueLog.events.paginate(page: params[:page], per_page:10)
-    @queue_logs = QueueLog.search(params[:datainicial], params[:datafinal]).paginate(page: params[:page],
-    per_page: 10) if params[:datainicial].present?
+    
+    @queue_logs = QueueLog.events(params[:filter], params[:datainicial], params[:datafinal]).paginate(page: params[:page], per_page:10)
 
     if params[:datainicial]  and params[:datainicial] != ""
-       @queue_log = QueueLog.search(params[:datainicial], params[:datafinal]) if params[:datainicial].present?
-    else
-      @queue_log = QueueLog.events
+      @queue_log = QueueLog.events(params[:filter], params[:datainicial], params[:datafinal])
     end
     
     respond_to do |format|

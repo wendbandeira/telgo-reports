@@ -1,0 +1,3 @@
+<%= link_to "Completadas ", queue_logs_path(filter: 'complete', datainicial: params[:datainicial], datafinal: params[:datafinal] ), class: 'button [tiny small large]' %>
+<%= link_to "Abandonadas", queue_logs_path(filter: 'abandon', datainicial: params[:datainicial], datafinal: params[:datafinal] ), class: 'button [tiny small large]' %>
+
