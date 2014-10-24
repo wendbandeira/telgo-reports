@@ -20,7 +20,7 @@ class QueueLog < ActiveRecord::Base
     end
 
     sql = "
-          select queue1.time, queue1.callid, queue1.queuename, queue1.agent, queue1.event, queue2.data2 from queue_logs queue1 
+          select queue2.time, queue2.callid, queue1.queuename, queue1.agent, queue1.event, queue2.data2 as origem, queue1.data1 as tempofila, queue1.data2 as tempoagente from queue_logs queue1 
           inner join queue_logs queue2 on queue2.callid = queue1.callid 
           where #{condition} order by queue1.id desc;
           "

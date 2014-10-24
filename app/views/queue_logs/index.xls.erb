@@ -8,7 +8,8 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">Data</Data></Cell>
-        <Cell><Data ss:Type="String">Codigo Chamada</Data></Cell>
+        <Cell><Data ss:Type="String">Tempo Fila</Data></Cell>
+        <Cell><Data ss:Type="String">Tempo Agente</Data></Cell>
         <Cell><Data ss:Type="String">Fila Chamada</Data></Cell>
         <Cell><Data ss:Type="String">Agente</Data></Cell>
         <Cell><Data ss:Type="String">Evento</Data></Cell>
@@ -17,11 +18,12 @@
     <% @queue_log.each do |queue| %>
       <Row>
         <Cell><Data ss:Type="String"><%= queue.time.to_datetime.strftime("%d-%m-%Y - %H:%M" ) %></Data></Cell>
-        <Cell><Data ss:Type="Number"><%= queue.callid %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Time.at(queue.tempofila.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Time.at(queue.tempoagente.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.queuename %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.agent %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.status %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= queue.data2 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.origem %></Data></Cell>
       </Row>
     <% end %>
     </Table>

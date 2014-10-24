@@ -19,23 +19,27 @@
       <thead>
         <tr>
           <th>Data</th>
-          <th>Codigo Chamada</th>
+          <th>Tempo Fila</th>
+          <th>Tempo Agente</th>
           <th>Fila Chamada</th>
-          <th>Agent</th>
-          <th>Event</th>
+          <th>Agente</th>
+          <th>Evento</th>
           <th>Origem</th>
+          <th> </th>
         </tr> 
       </thead>
 
       <tbody>
        <% @queue_logs.each do |t| %>
           <tr>
-            <td><%= t.time.to_datetime.strftime("%d-%m-%Y - %H:%M" ) %></td>
-            <td><%= t.callid %></td>
+            <td><%= t.time.to_datetime.strftime("%d-%m-%Y - %H:%M:%S" ) %></td>
+            <td><%= Time.at(t.tempofila.to_i).utc.strftime("%H:%M:%S")  %></td>
+            <td><%= Time.at(t.tempoagente.to_i).utc.strftime("%H:%M:%S") %></td>
             <td><%= t.queuename %></td>
             <td><%= t.agent %></td>
             <td><%= t.status %></td>
-            <td><%= t.data2 %></td>        
+            <td><%= t.origem %></td>
+            <td><%= link_to "audio", "http://192.168.1.71/gravacoes/monitor/q#{t.queuename}-#{t.time.to_datetime.strftime('%Y%m%d')}-#{t.time.to_datetime.utc.strftime('%H%M')}-#{t.callid}.gsm" %></td>        
           </tr>
         <% end %>
       </tbody>
