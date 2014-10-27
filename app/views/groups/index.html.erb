@@ -1,0 +1,30 @@
+<h1>Filas</h1>
+
+<div class='small-8 column' id='content'>
+  <table>
+    <thead>
+      <tr>
+        <th>Fila</th>
+        <th>Codigo</th>
+        <th>  </th>
+        <th>  </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= group.codequeue %></td>
+          <td><%= link_to 'Editar', edit_group_path(group) %></td>
+          <td><%= link_to 'Excluir', group, method: :delete, data: { confirm: 'Você tem certeza ?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to '+ Fila', new_group_path, class: 'button [secondary success alert]' %>
+
+  </div>

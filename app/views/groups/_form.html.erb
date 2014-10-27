@@ -1,0 +1,28 @@
+<div class='small-8 column' id='content'>
+  <%= form_for(@group) do |f| %>
+    <% if @group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+        <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :nome %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :codigo_fila %><br>
+      <%= f.text_field :codequeue %>
+    </div>
+    <div>
+      <%= f.submit "Cadastrar", class: 'button [secondary success alert]' %>
+      <%= link_to 'voltar', groups_path, class: 'button [secondary large]' %>
+    </div>
+  <% end %>
+</div>

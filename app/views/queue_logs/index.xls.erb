@@ -22,7 +22,7 @@
         <Cell><Data ss:Type="String"><%= Time.at(queue.tempofila.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= Time.at(queue.tempoagente.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= CodigosHelper.range_hour(queue.time.to_datetime.strftime("%H")) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= queue.queuename %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= CodigosHelper.queue_name(queue.queuename) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.agent %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.status %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.origem %></Data></Cell>
