@@ -6,13 +6,14 @@
       <%= date_field_tag :datafinal, params[:datafinal] %>
       <%= submit_tag "Buscar", name: nil, class: "button [secondary success alert]" %>
   <% end %>
-</div>
-
-    <p>
+  <p>
       Download:
         <%= link_to "Excel", queue_logs_path(format: "xls" , 
         datainicial: params[:datainicial], datafinal: params[:datafinal], filter: params[:filter] )  %>
     </p>
+</div>
+
+
 
 <div class='small-8 column' id='content'>
   <table>
@@ -21,8 +22,8 @@
           <th>Data</th>
           <th>Tempo Fila</th>
           <th>Tempo Agente</th>
-          <th>Fila Chamada</th>
           <th>Faixa de horário</th>
+          <th>Fila Chamada</th>
           <th>Agente</th>
           <th>Evento</th>
           <th>Origem</th>
@@ -37,7 +38,7 @@
             <td><%= Time.at(t.tempofila.to_i).utc.strftime("%H:%M:%S")  %></td>
             <td><%= Time.at(t.tempoagente.to_i).utc.strftime("%H:%M:%S") %></td>
             <td><%= CodigosHelper.range_hour(t.time.to_datetime.strftime("%H"))%></td>
-            <td><%= t.queuename %></td>
+            <td><%= CodigosHelper.queue_name(t.queuename) %></td>
             <td><%= t.agent %></td>
             <td><%= t.status %></td>
             <td><%= t.origem %></td>

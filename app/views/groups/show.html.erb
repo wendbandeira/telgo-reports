@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Codigo Fila:</strong>
+  <%= @group.codequeue %>
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group), class: 'button [secondary large]' %> 
+<%= link_to 'Back', groups_path, class: 'button [secondary large]' %>

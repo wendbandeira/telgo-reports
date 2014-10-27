@@ -11,21 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003175815) do
+ActiveRecord::Schema.define(version: 20141024172056) do
 
-  create_table "queue_logs", force: true do |t|
-    t.string   "time",       limit: 26,  default: ""
-    t.string   "callid",     limit: 32,  default: "", null: false
-    t.string   "queuename",  limit: 32,  default: "", null: false
-    t.string   "agent",      limit: 32,  default: "", null: false
-    t.string   "event",      limit: 32,  default: "", null: false
-    t.string   "data1",      limit: 100, default: "", null: false
-    t.string   "data2",      limit: 32,  default: "", null: false
-    t.string   "data3",      limit: 32,  default: "", null: false
-    t.string   "data4",      limit: 32,  default: "", null: false
-    t.string   "data5",      limit: 32,  default: "", null: false
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "codequeue"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "queue_logs", force: true do |t|
+    t.string "time",      limit: 26,  default: ""
+    t.string "callid",    limit: 32,  default: "", null: false
+    t.string "queuename", limit: 32,  default: "", null: false
+    t.string "agent",     limit: 32,  default: "", null: false
+    t.string "event",     limit: 32,  default: "", null: false
+    t.string "data1",     limit: 100, default: "", null: false
+    t.string "data2",     limit: 32,  default: "", null: false
+    t.string "data3",     limit: 32,  default: "", null: false
+    t.string "data4",     limit: 32,  default: "", null: false
+    t.string "data5",     limit: 32,  default: "", null: false
   end
 
 end
