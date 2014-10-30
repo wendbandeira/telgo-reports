@@ -28,8 +28,13 @@ class QueueLog < ActiveRecord::Base
 
  end
 
- def status
-     event == "COMPLETECALLER" ? "FINALIZADA" : event
+ def status(event)
+  case event
+    when "COMPLETECALLER"
+      then "Finalizada"
+    when "COMPLETEAGENT"
+      then "Finalizada p/ Agent"
+      else "Abandonada"
+  end
  end
-
 end

@@ -40,7 +40,7 @@
             <td><%= CodigosHelper.range_hour(t.time.to_datetime.strftime("%H"))%></td>
             <td><%= CodigosHelper.queue_name(t.queuename) %></td>
             <td><%= t.agent %></td>
-            <td><%= t.status %></td>
+            <td><%= t.status(t.event) %></td>
             <td><%= t.origem %></td>
             <td><%= link_to "audio", "http://192.168.1.71/gravacoes/monitor/q#{t.queuename}-#{t.time.to_datetime.strftime('%Y%m%d')}-#{t.time.to_datetime.utc.strftime('%H%M')}-#{t.callid}.gsm" %></td>        
           </tr>
