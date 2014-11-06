@@ -8,6 +8,7 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">Data</Data></Cell>
+        <Cell><Data ss:Type="String">Hora</Data></Cell>
         <Cell><Data ss:Type="String">Tempo Fila</Data></Cell>
         <Cell><Data ss:Type="String">Tempo Agente</Data></Cell>
         <Cell><Data ss:Type="String">Faixa de Horário</Data></Cell>
@@ -15,10 +16,13 @@
         <Cell><Data ss:Type="String">Agente</Data></Cell>
         <Cell><Data ss:Type="String">Evento</Data></Cell>
         <Cell><Data ss:Type="String">Origem</Data></Cell>
+        <Cell><Data ss:Type="String">Solução</Data></Cell>
+        <Cell><Data ss:Type="String">Nota</Data></Cell>
       </Row>
     <% @queue_log.each do |queue| %>
       <Row>
-        <Cell><Data ss:Type="String"><%= queue.time.to_datetime.strftime("%d-%m-%Y - %H:%M" ) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.time.to_datetime.strftime("%d-%m-%Y" ) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.time.to_datetime.strftime("%H:%M" ) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= Time.at(queue.tempofila.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= Time.at(queue.tempoagente.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= CodigosHelper.range_hour(queue.time.to_datetime.strftime("%H")) %></Data></Cell>
@@ -26,6 +30,8 @@
         <Cell><Data ss:Type="String"><%= queue.agent %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.status(queue.event) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= queue.origem %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.solucao %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= queue.nota %></Data></Cell>
       </Row>
     <% end %>
     </Table>
