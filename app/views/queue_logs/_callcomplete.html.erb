@@ -6,11 +6,14 @@
       <%= date_field_tag :datafinal, params[:datafinal] %>
       <%= submit_tag "Buscar", name: nil, class: "button [secondary success alert]" %>
   <% end %>
-  <p>
+
+ <% unless params[:datainicial].blank? %>
+    <p>
       Download:
         <%= link_to "Excel", queue_logs_path(format: "xls" , 
-        datainicial: params[:datainicial], datafinal: params[:datafinal], filter: params[:filter] )  %>
+        datainicial: params[:datainicial], datafinal: params[:datafinal] )  %>
     </p>
+ <% end %>
 </div>
 
 
@@ -42,7 +45,7 @@
             <td><%= t.agent %></td>
             <td><%= t.status(t.event) %></td>
             <td><%= t.origem %></td>
-            <td><%= link_to "audio", "http://192.168.1.71/gravacoes/monitor/q#{t.queuename}-#{t.time.to_datetime.strftime('%Y%m%d')}-#{t.time.to_datetime.utc.strftime('%H%M')}-#{t.callid}.gsm" %></td>        
+            <td><%= link_to "audio", "http://192.168.1.70/gravacoes/monitor/q#{t.queuename}-#{t.time.to_datetime.strftime('%Y%m%d')}-#{t.time.to_datetime.utc.strftime('%H%M')}-#{t.callid}.gsm" %></td>        
           </tr>
         <% end %>
       </tbody>
