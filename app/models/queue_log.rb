@@ -11,8 +11,8 @@ class QueueLog < ActiveRecord::Base
 
   condition = " #{date_filter}
                 queue2.event = 'ENTERQUEUE' and queue1.event = 'COMPLETECALLER'  
-                or queue2.event = 'ENTERQUEUE' and queue1.event = 'COMPLETEAGENT'
-                or queue2.event = 'ENTERQUEUE' and queue1.event = 'ABANDON'"
+                or #{date_filter} queue2.event = 'ENTERQUEUE' and queue1.event = 'COMPLETEAGENT'
+                or #{date_filter} queue2.event = 'ENTERQUEUE' and queue1.event = 'ABANDON'"
 
   sql = "select queue2.time, queue2.callid, queue1.queuename, queue1.agent, queue1.event, queue2.data2 as origem, 
         queue1.data1 as tempofila, queue1.data2 as tempoagente, queue2.data4 as solucao, queue2.data5 as nota from queue_logs queue1 
