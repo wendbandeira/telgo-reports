@@ -14,7 +14,7 @@ development:
   database: elastix
   pool: 5
   username: root
-  password: 
+  password: c4103du
   #socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -26,7 +26,7 @@ test:
   database: elastix
   pool: 5
   username: root
-  password: 
+  password: c4103du
   #socket: /tmp/mysql.sock
 
 production:
@@ -35,5 +35,5 @@ production:
   database: elastix
   pool: 5
   username: root
-  password: 
+  password: c4103du
   #socket: /tmp/mysql.sock

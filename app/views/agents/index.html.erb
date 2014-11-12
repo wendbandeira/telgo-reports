@@ -1,0 +1,30 @@
+<h1>Agentes</h1>
+
+<div class='small-8 column' id='content'>
+  <table>
+    <thead>
+      <tr>
+        <th>Agente</th>
+        <th>Codigo</th>
+        <th>  </th>
+        <th>  </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @agents.each do |agent| %>
+        <tr>
+          <td><%= agent.name %></td>
+          <td><%= agent.codeagent %></td>
+          <td><%= link_to 'Editar', edit_agent_path(agent) %></td>
+          <td><%= link_to 'Excluir', agent, method: :delete, data: { confirm: 'Você tem certeza ?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to '+ Agente', new_agent_path, class: 'button [secondary success alert]' %>
+
+  </div>
