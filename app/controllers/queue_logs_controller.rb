@@ -2,7 +2,7 @@ class QueueLogsController < ApplicationController
 
   def index
     
-    @queue_logs = QueueLog.events(params[:datainicial], params[:datafinal]).paginate(page: params[:page], per_page:10)
+    @queue_logs = QueueLog.events(params[:datainicial], params[:datafinal]).paginate(page: params[:page], per_page:20)
 
     if params[:datainicial]  and params[:datainicial] != ""
       @queue_log = QueueLog.events(params[:datainicial], params[:datafinal])

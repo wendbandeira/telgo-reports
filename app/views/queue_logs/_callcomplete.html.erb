@@ -42,10 +42,10 @@
             <td><%= Time.at(t.tempoagente.to_i).utc.strftime("%H:%M:%S") %></td>
             <td><%= CodigosHelper.range_hour(t.time.to_datetime.strftime("%H"))%></td>
             <td><%= CodigosHelper.queue_name(t.queuename) %></td>
-            <td><%= t.agent %></td>
+            <td><%= CodigosHelper.agent_name(t.agent) %></td>
             <td><%= t.status(t.event) %></td>
             <td><%= t.origem %></td>
-            <td><%= link_to "audio", "http://192.168.1.70/gravacoes/monitor/q#{t.queuename}-#{t.time.to_datetime.strftime('%Y%m%d')}-#{t.time.to_datetime.utc.strftime('%H%M')}-#{t.callid}.gsm" %></td>        
+            <td><%= link_to "audio", "http://127.0.0.1/gravacoes/monitor/q#{t.queuename}-#{t.callid}.gsm" %></td>        
           </tr>
         <% end %>
       </tbody>

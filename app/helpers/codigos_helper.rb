@@ -10,4 +10,9 @@ module CodigosHelper
     namequeue = Group.find_by(codequeue: code)
     return namequeue.blank? ? code : namequeue.name
   end
+
+  def self.agent_name(code)
+    nameagent = Agent.find_by(codeagent: code.split("Agent/"))
+    return nameagent.blank? ? code : nameagent.name
+  end
 end
