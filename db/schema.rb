@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20141112183645) do
 
+  create_table "agent", force: true do |t|
+    t.string "agent_number", limit: 40,                null: false
+    t.string "agent_name",   limit: 250,               null: false
+    t.string "status",       limit: 1,   default: "0"
+  end
+
   create_table "agents", force: true do |t|
     t.string   "name"
     t.string   "codeagent"
@@ -37,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141112183645) do
     t.string "data2",     limit: 32,  default: "", null: false
     t.string "data3",     limit: 32,  default: "", null: false
     t.string "data4",     limit: 32,  default: "", null: false
+    t.string "data6",     limit: 10,  default: "", null: false
     t.string "data5",     limit: 32,  default: "", null: false
   end
 
