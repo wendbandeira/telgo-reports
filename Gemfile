@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.6'
 gem 'mysql2'
 gem 'sass-rails', '~> 4.0.2'
@@ -10,11 +9,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'foundation-rails'
-gem 'binding_of_caller'
 gem 'will_paginate', '3.0.5'
 
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :doc do
