@@ -19,19 +19,20 @@
         <Cell><Data ss:Type="String">Solução</Data></Cell>
         <Cell><Data ss:Type="String">Nota</Data></Cell>
       </Row>
-    <% @queue_log.each do |queue| %>
+    <% @queue_logs.group_by(&:callid).each do |callid, records| %>
       <Row>
-        <Cell><Data ss:Type="String"><%= queue.time.to_datetime.strftime("%d-%m-%Y" ) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= queue.time.to_datetime.strftime("%H:%M" ) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= Time.at(queue.tempofila.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= Time.at(queue.tempoagente.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= CodigosHelper.range_hour(queue.time.to_datetime.strftime("%H")) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= CodigosHelper.queue_name(queue.queuename) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= CodigosHelper.agent_name(queue.agent) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= queue.status(queue.event) %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= queue.origem %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= queue.solucao %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= queue.nota %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= callid %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= queue.time.to_datetime.strftime("%d-%m-%Y" ) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= queue.time.to_datetime.strftime("%H:%M" ) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= Time.at(queue.tempofila.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= Time.at(queue.tempoagente.to_i).utc.strftime("%H:%M:%S") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= CodigosHelper.range_hour(queue.time.to_datetime.strftime("%H")) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= CodigosHelper.queue_name(queue.queuename) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= CodigosHelper.agent_name(queue.agent) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= queue.status(queue.event) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= queue.origem %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= queue.solucao %></Data></Cell>
+        <Cell><Data ss:Type="String"><%#= queue.nota %></Data></Cell>
       </Row>
     <% end %>
     </Table>

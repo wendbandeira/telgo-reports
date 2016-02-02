@@ -13,6 +13,7 @@ gem 'will_paginate', '3.0.5'
 gem 'thin'
 
 group :development do
+  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
