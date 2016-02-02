@@ -1,35 +1,24 @@
 class QueueLog < ActiveRecord::Base
+  belongs_to :group, primary_key: :codequeue, foreign_key: :queuename
 
- def self.events(datainicio, datafinal)
-
-  if datainicio.blank? && datafinal.blank?
-    datainicio = Date.current
-    datafinal = Date.current
+  scope :by_date, -> (date1, date2) do
+    date1 ||= Date.current
+    date2 ||= Date.current
+    where(time: date1.to_date.beginning_of_day..date2.to_date.end_of_day)
+  end
+  scope :with_callid, -> { where.not(callid: 'NONE') }
+  scope :ordered, -> { order(arel_table[:id]) }
+  scope :by_callid, -> value { where(callid: value) }
+  scope :by_queue, -> value { where(queuename: Group.find_by(name: value).try(:codequeue)) }
+  scope :by_agent, -> value { where(agent: "Agent/#{Agent.find_by(name: value).try(:codeagent)}") }
+  scope :considered, -> do
+    where(event: %w(ABANDON COMPLETEAGENT COMPLETECALLER CONNECT ENTERQUEUE EXITWITHTIMEOUT TRANSFER RINGNOANSWER))
   end
 
-  date_filter = "queue1.id in (select id from queue_logs where date(time) between '#{datainicio}' and '#{datafinal}') and "
+  alias_attribute :queue_time, :data1
+  alias_attribute :agent_time, :data2
 
-  condition = " #{date_filter}
-                queue2.event = 'ENTERQUEUE' and queue1.event = 'COMPLETECALLER'  
-                or #{date_filter} queue2.event = 'ENTERQUEUE' and queue1.event = 'COMPLETEAGENT'
-                or #{date_filter} queue2.event = 'ENTERQUEUE' and queue1.event = 'ABANDON'"
-
-  sql = "select queue2.time, queue2.callid, queue1.queuename, queue1.agent, queue1.event, queue2.data2 as origem, 
-        queue1.data1 as tempofila, queue1.data2 as tempoagente, queue2.data4 as solucao, queue2.data5 as nota from queue_logs queue1 
-        inner join queue_logs queue2 on queue2.callid = queue1.callid 
-        where #{condition} order by queue1.id desc;"
-
-    QueueLog.find_by_sql (sql)
-
- end
-
- def status(event)
-  case event
-    when "COMPLETECALLER"
-      then "Finalizada"
-    when "COMPLETEAGENT"
-      then "Finalizada p/ Agent"
-      else "Abandonada"
+  def agent_relation
+    Agent.find_by(codeagent: agent.split('/').last)
   end
- end
 end
