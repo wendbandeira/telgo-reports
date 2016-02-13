@@ -53,3 +53,18 @@
   </table>
   <%= will_paginate @callids, previous_label: 'Próx', next_label: 'Ant' %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    function setDate(field) {
+      var input = $('#' + field);
+
+      if (input.val() === '') {
+        input.val('<%= Date.current.to_s %>');
+      }
+    }
+
+    setDate('datainicial');
+    setDate('datafinal');
+  });
+</script>

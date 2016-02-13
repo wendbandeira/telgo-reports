@@ -40,7 +40,7 @@ class CallInfo
   end
 
   def file
-    "http://127.0.0.1/gravacoes/monitor/q#{last_record.queuename}-#{last_record.callid}.gsm"
+    "http://telefonia.telgo.com.br/gravacoes/monitor/#{last_record.callid}.wav"
   end
 
   private
