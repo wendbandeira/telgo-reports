@@ -13,8 +13,10 @@
     <Table>
       <Row>
         <Cell ss:StyleID="header"><Data ss:Type="String">Código</Data></Cell>
-        <Cell ss:StyleID="header"><Data ss:Type="String">Início</Data></Cell>
-        <Cell ss:StyleID="header"><Data ss:Type="String">Fim</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Início/Data</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Início/Hora</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Fim/Data</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Fim/Hora</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Tempo</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Faixa de Horário</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Arquivo</Data></Cell>
@@ -25,15 +27,17 @@
         <Row>
           <% info = CallInfo.new(records) %>
           <Cell><Data ss:Type="String"><%= callid %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= info.start_call.strftime("%d-%m-%Y - %H:%M:%S") %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= info.end_call.strftime("%d-%m-%Y - %H:%M:%S") %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.start_call.strftime("%d/%m/%Y") %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.start_call.strftime("%H:%M:%S") %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.end_call.strftime("%d/%m/%Y") %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.end_call.strftime("%H:%M:%S") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.total_time %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.time_range %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.file %></Data></Cell>
         </Row>
         <% info.history.split('<br>').each do |desc| %>
           <Row>
-            <Cell ss:MergeAcross="5">
+            <Cell ss:MergeAcross="7">
               <Data ss:Type="String"><%= desc %></Data>
             </Cell>
           </Row>
