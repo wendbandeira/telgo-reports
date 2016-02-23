@@ -92,6 +92,14 @@ class CallInfo
     time
   end
 
+  def expiration_times
+    count_events('EXITWITHTIMEOUT')
+  end
+
+  def try_times
+    count_events('RINGNOANSWER')
+  end
+
   def file
     "http://telefonia.telgo.com.br/gravacoes/monitor/#{last_record.callid}.wav"
   end
@@ -102,5 +110,9 @@ class CallInfo
 
   def last_record
     @last_record ||= records.last
+  end
+
+  def count_events(event)
+    records.select { |x| x.event == event }.size
   end
 end
