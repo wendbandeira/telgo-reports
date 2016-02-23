@@ -21,6 +21,7 @@
         <Cell ss:StyleID="header"><Data ss:Type="String">Última fila</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Último agente</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Tempo chamada</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Tempo em fila</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Tempo total</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Faixa de Horário</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Arquivo</Data></Cell>
@@ -39,13 +40,14 @@
           <Cell><Data ss:Type="String"><%= info.last_queue %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.last_agent %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.in_call_time %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.in_queue_time %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.total_time %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.time_range %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.file %></Data></Cell>
         </Row>
         <% info.history.split('<br>').each do |desc| %>
           <Row>
-            <Cell ss:MergeAcross="11">
+            <Cell ss:MergeAcross="12">
               <Data ss:Type="String"><%= desc %></Data>
             </Cell>
           </Row>
