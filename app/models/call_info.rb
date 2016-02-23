@@ -39,6 +39,20 @@ class CallInfo
     str
   end
 
+  def last_status
+    record = records.last
+    case record.event
+    when 'ENTERQUEUE' then "Entrou na fila"
+    when 'RINGNOANSWER' then "Não foi atendido"
+    when 'CONNECT' then "Atendido"
+    when 'EXITWITHTIMEOUT' then "Tempo expirado"
+    when 'COMPLETEAGENT' then "Desligado pelo atendente"
+    when 'COMPLETECALLER' then "Completada"
+    when 'TRANSFER' then "Transferido"
+    else ''
+    end
+  end
+
   def file
     "http://telefonia.telgo.com.br/gravacoes/monitor/#{last_record.callid}.wav"
   end
