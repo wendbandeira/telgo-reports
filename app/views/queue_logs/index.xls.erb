@@ -31,7 +31,6 @@
         <Cell ss:StyleID="header"><Data ss:Type="String">Arquivo</Data></Cell>
       </Row>
 
-      <Row></Row>
       <% @queue_logs.group_by(&:callid).each do |callid, records| %>
         <Row>
           <% info = CallInfo.new(records) %>
@@ -53,14 +52,6 @@
           <Cell><Data ss:Type="String"><%= info.solution %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.file %></Data></Cell>
         </Row>
-        <% info.history.split('<br>').each do |desc| %>
-          <Row>
-            <Cell ss:MergeAcross="16">
-              <Data ss:Type="String"><%= desc %></Data>
-            </Cell>
-          </Row>
-        <% end %>
-        <Row></Row>
       <% end %>
     </Table>
   </Worksheet>
