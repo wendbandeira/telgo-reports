@@ -33,6 +33,7 @@ class CallInfo
              when 'COMPLETEAGENT' then "Desligado pelo atendente <br>"
              when 'COMPLETECALLER' then "Completada <br>"
              when 'TRANSFER' then "Transferido (#{record.data2}) <br>"
+             when 'ABANDON' then "Abandonada <br>"
              else ''
       end
     end
@@ -49,6 +50,7 @@ class CallInfo
     when 'COMPLETEAGENT' then "Desligado pelo atendente"
     when 'COMPLETECALLER' then "Completada"
     when 'TRANSFER' then "Transferido"
+    when 'ABANDON' then "Abandonada"
     else ''
     end
   end
@@ -69,6 +71,16 @@ class CallInfo
       agent = name if name.present?
     end
     agent
+  end
+
+  def in_call_time
+    time = 0
+    records.each do |record|
+      if %w(COMPLETEAGENT COMPLETECALLER).include? record.event
+        time += record.data2.to_i
+      end
+    end
+    time
   end
 
   def file
