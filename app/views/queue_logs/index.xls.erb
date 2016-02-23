@@ -18,6 +18,7 @@
         <Cell ss:StyleID="header"><Data ss:Type="String">Fim/Data</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Fim/Hora</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Último status</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Última fila</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Tempo</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Faixa de Horário</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Arquivo</Data></Cell>
@@ -33,6 +34,7 @@
           <Cell><Data ss:Type="String"><%= info.end_call.strftime("%d/%m/%Y") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.end_call.strftime("%H:%M:%S") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.last_status %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.last_queue %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.total_time %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.time_range %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.file %></Data></Cell>

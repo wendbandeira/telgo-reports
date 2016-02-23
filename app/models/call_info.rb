@@ -53,6 +53,14 @@ class CallInfo
     end
   end
 
+  def last_queue
+    queue = nil
+    records.each do |record|
+      queue = record.group.try(:name)
+    end
+    queue
+  end
+
   def file
     "http://telefonia.telgo.com.br/gravacoes/monitor/#{last_record.callid}.wav"
   end
