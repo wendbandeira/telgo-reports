@@ -26,6 +26,8 @@
         <Cell ss:StyleID="header"><Data ss:Type="String">Qtd de Expirado</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Qtd Tentivas</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Faixa de Horário</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Nota</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Solução</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Arquivo</Data></Cell>
       </Row>
 
@@ -47,11 +49,13 @@
           <Cell><Data ss:Type="String"><%= info.expiration_times %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.try_times %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.time_range %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.score %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.solution %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.file %></Data></Cell>
         </Row>
         <% info.history.split('<br>').each do |desc| %>
           <Row>
-            <Cell ss:MergeAcross="14">
+            <Cell ss:MergeAcross="16">
               <Data ss:Type="String"><%= desc %></Data>
             </Cell>
           </Row>

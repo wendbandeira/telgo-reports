@@ -28,7 +28,7 @@ class CallInfo
       str << case record.event
              when 'ENTERQUEUE' then "Entrou na fila #{record.group.try(:name)}, origem: #{record.data2} <br>"
              when 'RINGNOANSWER' then "Não foi atendido por #{record.agent_relation.name} <br>"
-             when 'CONNECT' then "Atendido por #{record.agent_relation.name} <br>"
+             when 'CONNECT' then "Atendido por #{record.agent_relation.try(:name)} <br>"
              when 'EXITWITHTIMEOUT' then "Tempo expirado (#{record.data3} seg) <br>"
              when 'COMPLETEAGENT' then "Desligado pelo atendente <br>"
              when 'COMPLETECALLER' then "Completada <br>"
@@ -100,6 +100,17 @@ class CallInfo
     count_events('RINGNOANSWER')
   end
 
+  def score
+    last_enterqueue.data5 if last_enterqueue
+  end
+
+  def solution
+    return if last_enterqueue.blank?
+    return if last_enterqueue.data4.blank?
+
+    last_enterqueue.data4 == '1' ? 'Solucionado' : 'Não solucionado'
+  end
+
   def file
     "http://telefonia.telgo.com.br/gravacoes/monitor/#{last_record.callid}.wav"
   end
@@ -110,6 +121,10 @@ class CallInfo
 
   def last_record
     @last_record ||= records.last
+  end
+
+  def last_enterqueue
+    @last_enterqueue ||= records.select { |x| x.event == 'ENTERQUEUE' }.last
   end
 
   def count_events(event)
