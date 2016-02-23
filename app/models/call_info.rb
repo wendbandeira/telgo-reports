@@ -12,7 +12,7 @@ class CallInfo
   end
 
   def total_time
-    ((end_call - start_call) * 24 * 60 * 60).to_i.to_s + ' seg'
+    hour_format ((end_call - start_call) * 24 * 60 * 60).to_i
   end
 
   def time_range
@@ -80,7 +80,7 @@ class CallInfo
         time += record.data2.to_i
       end
     end
-    time
+    hour_format time
   end
 
   def in_queue_time
@@ -89,7 +89,7 @@ class CallInfo
       time += record.data1.to_i if %w(CONNECT COMPLETEAGENT COMPLETECALLER TRANSFER).include? record.event
       time += record.data3.to_i if %w(ENTERQUEUE EXITWITHTIMEOUT ABANDON).include? record.event
     end
-    time
+    hour_format time
   end
 
   def expiration_times
@@ -129,5 +129,13 @@ class CallInfo
 
   def count_events(event)
     records.select { |x| x.event == event }.size
+  end
+
+  def hour_format(total_seconds)
+    seconds = total_seconds % 60
+    minutes = (total_seconds / 60) % 60
+    hours = total_seconds / (60 * 60)
+
+    format("%02d:%02d:%02d", hours, minutes, seconds)
   end
 end
