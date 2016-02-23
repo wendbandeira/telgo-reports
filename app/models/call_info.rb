@@ -56,9 +56,19 @@ class CallInfo
   def last_queue
     queue = nil
     records.each do |record|
-      queue = record.group.try(:name)
+      name = record.group.try(:name)
+      queue = name if name.present?
     end
     queue
+  end
+
+  def last_agent
+    agent = nil
+    records.each do |record|
+      name = record.agent_relation.try(:name)
+      agent = name if name.present?
+    end
+    agent
   end
 
   def file
