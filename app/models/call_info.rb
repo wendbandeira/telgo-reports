@@ -86,8 +86,8 @@ class CallInfo
   def in_queue_time
     time = 0
     records.each do |record|
-      time += record.data1.to_i if %w(CONNECT COMPLETEAGENT COMPLETECALLER TRANSFER).include? record.event
-      time += record.data3.to_i if %w(ENTERQUEUE EXITWITHTIMEOUT ABANDON).include? record.event
+      time += record.data1.to_i if %w(COMPLETEAGENT TRANSFER EXITWITHTIMEOUT).include? record.event
+      time += record.data3.to_i if %w(CONNECT ENTERQUEUE EXITWITHTIMEOUT ABANDON COMPLETECALLER).include? record.event
     end
     hour_format time
   end
