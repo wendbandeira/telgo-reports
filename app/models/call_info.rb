@@ -58,7 +58,7 @@ class CallInfo
   def source_number
     return if first_enterqueue.blank?
 
-    last_enterqueue.data2
+    first_enterqueue.data2
   end
 
   def last_queue
