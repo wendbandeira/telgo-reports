@@ -13,6 +13,7 @@
     <Table>
       <Row>
         <Cell ss:StyleID="header"><Data ss:Type="String">Código</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Origem</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Início/Data</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Início/Hora</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Fim/Data</Data></Cell>
@@ -35,6 +36,7 @@
         <Row>
           <% info = CallInfo.new(records) %>
           <Cell><Data ss:Type="String"><%= callid %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.source_number %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.start_call.strftime("%d/%m/%Y") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.start_call.strftime("%H:%M:%S") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.end_call.strftime("%d/%m/%Y") %></Data></Cell>

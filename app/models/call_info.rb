@@ -55,6 +55,12 @@ class CallInfo
     end
   end
 
+  def source_number
+    return if first_enterqueue.blank?
+
+    last_enterqueue.data2
+  end
+
   def last_queue
     queue = nil
     records.each do |record|
@@ -123,8 +129,16 @@ class CallInfo
     @last_record ||= records.last
   end
 
+  def enterqueue_records
+    @enterqueue_records ||= records.select { |x| x.event == 'ENTERQUEUE' }
+  end
+
   def last_enterqueue
-    @last_enterqueue ||= records.select { |x| x.event == 'ENTERQUEUE' }.last
+    @last_enterqueue ||= enterqueue_records.last
+  end
+
+  def first_enterqueue
+    @first_enterqueue ||= enterqueue_records.first
   end
 
   def count_events(event)
