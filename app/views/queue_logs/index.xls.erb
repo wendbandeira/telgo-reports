@@ -18,8 +18,9 @@
         <Cell ss:StyleID="header"><Data ss:Type="String">Início/Hora</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Fim/Data</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Fim/Hora</Data></Cell>
-        <Cell ss:StyleID="header"><Data ss:Type="String">Último status</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Primeira fila</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Última fila</Data></Cell>
+        <Cell ss:StyleID="header"><Data ss:Type="String">Último status</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Último agente</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Tempo chamada</Data></Cell>
         <Cell ss:StyleID="header"><Data ss:Type="String">Tempo em fila</Data></Cell>
@@ -41,8 +42,9 @@
           <Cell><Data ss:Type="String"><%= info.start_call.strftime("%H:%M:%S") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.end_call.strftime("%d/%m/%Y") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.end_call.strftime("%H:%M:%S") %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= info.last_status %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.first_queue %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.last_queue %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= info.last_status %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.last_agent %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.in_call_time %></Data></Cell>
           <Cell><Data ss:Type="String"><%= info.in_queue_time %></Data></Cell>

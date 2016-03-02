@@ -69,6 +69,14 @@ class CallInfo
     queue
   end
 
+  def first_queue
+    records.each do |record|
+      name = record.group.try(:name)
+      return name if name.present?
+    end
+    nil
+  end
+
   def last_agent
     agent = nil
     records.each do |record|
