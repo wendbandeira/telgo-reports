@@ -16,9 +16,8 @@ class CallInfo
   end
 
   def time_range
-    start = start_call.hour.to_i
-    ended = end_call.hour.to_i + 1
-    "#{start}:00 - #{ended}:00"
+    hour = start_call.hour.to_i
+    "#{hour}:00 - #{hour + 1}:00"
   end
 
   def history
