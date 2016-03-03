@@ -11,8 +11,9 @@ class CallInfo
     @end_call ||= last_record.time.to_datetime
   end
 
-  def total_time
-    hour_format ((end_call - start_call) * 24 * 60 * 60).to_i
+  def total_time(formatted = true)
+    info = ((end_call - start_call) * 24 * 60 * 60).to_i
+    formatted ? hour_format(info) : info
   end
 
   def time_range
@@ -94,22 +95,19 @@ class CallInfo
     agent
   end
 
-  def in_call_time
+  def in_call_time(formatted = true)
     time = 0
     records.each do |record|
       if %w(COMPLETEAGENT COMPLETECALLER TRANSFER).include? record.event
         time += record.data2.to_i
       end
     end
-    hour_format time
+    formatted ? hour_format(time) : time
   end
 
+  # Tempo total - Tempo de ligação
   def in_queue_time
-    time = 0
-    records.each do |record|
-      time += record.data1.to_i if %w(COMPLETEAGENT TRANSFER EXITWITHTIMEOUT).include? record.event
-      time += record.data3.to_i if %w(CONNECT ENTERQUEUE EXITWITHTIMEOUT ABANDON COMPLETECALLER).include? record.event
-    end
+    time = total_time(false) - in_call_time(false)
     hour_format time
   end
 
