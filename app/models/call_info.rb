@@ -69,6 +69,10 @@ class CallInfo
     first_enterqueue.data2
   end
 
+  def document_number
+    last_record.document_number
+  end
+
   def last_queue
     queue = nil
     records.each do |record|

@@ -21,4 +21,8 @@ class QueueLog < ActiveRecord::Base
   def agent_relation
     Agent.find_by(codeagent: agent.split('/').last)
   end
+
+  def document_number
+    Client.by_callid(callid).last.try(:document_number)
+  end
 end
