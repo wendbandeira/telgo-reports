@@ -54,6 +54,14 @@ class CallInfo
     end
   end
 
+  def result
+    case last_record.event
+    when 'EXITWITHTIMEOUT', 'ABANDON' then 'Abandonada'
+    else
+      'Atendida'
+    end
+  end
+
   def source_number
     return if first_enterqueue.blank?
 
