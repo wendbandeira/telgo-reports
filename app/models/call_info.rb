@@ -87,6 +87,9 @@ class CallInfo
   end
 
   def last_agent
+    # Se o último evento é 'ABANDON' e tem mais de 1 tentativa (agente fica em branco)
+    return if last_record.event == 'ABANDON' && try_times > 0
+
     agent = nil
     records.each do |record|
       name = record.agent_relation.try(:name)
