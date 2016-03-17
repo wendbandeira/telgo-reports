@@ -27,7 +27,7 @@ class CallInfo
       str << "#{record.time.to_datetime.strftime("%d-%m-%Y - %H:%M:%S")} - "
       str << case record.event
              when 'ENTERQUEUE' then "Entrou na fila #{record.group.try(:name)}, origem: #{record.data2} <br>"
-             when 'RINGNOANSWER' then "Não foi atendido por #{record.agent_relation.name} <br>"
+             when 'RINGNOANSWER' then "Não foi atendido por #{record.agent_relation.try(:name)} <br>"
              when 'CONNECT' then "Atendido por #{record.agent_relation.try(:name)} <br>"
              when 'EXITWITHTIMEOUT' then "Tempo expirado (#{record.data3} seg) <br>"
              when 'COMPLETEAGENT' then "Desligado pelo atendente <br>"
