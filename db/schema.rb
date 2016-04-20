@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20141112183645) do
     t.datetime "updated_at"
   end
 
+  create_table "avaliation", force: true do |t|
+    t.text    "callid",               null: false
+    t.integer "question01", limit: 1, null: false
+    t.integer "question02", limit: 1, null: false
+  end
+
+  create_table "clients", force: true do |t|
+    t.text    "callid"
+    t.string  "document_number", limit: 50, default: "0", null: false
+    t.integer "phone_number",               default: 0,   null: false
+  end
+
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "codequeue"
@@ -44,6 +56,7 @@ ActiveRecord::Schema.define(version: 20141112183645) do
     t.string "data3",     limit: 32,  default: "", null: false
     t.string "data4",     limit: 32,  default: "", null: false
     t.string "data6",     limit: 10,  default: "", null: false
+    t.string "CPFCNJP",   limit: 32,  default: "", null: false
     t.string "data5",     limit: 32,  default: "", null: false
   end
 
