@@ -103,12 +103,10 @@ class CallInfo
   end
 
   def in_call_time(formatted = true)
-    time = 0
-    records.each do |record|
-      if %w(COMPLETEAGENT COMPLETECALLER TRANSFER).include? record.event
-        time += record.data2.to_i
-      end
-    end
+    record = records.last
+    time = record.event == 'TRANSFER' ? record.data4.to_i : record.data2.to_i
+    time ||= 0
+
     formatted ? hour_format(time) : time
   end
 
