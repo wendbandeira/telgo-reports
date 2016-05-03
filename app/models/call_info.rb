@@ -104,9 +104,9 @@ class CallInfo
 
   def in_call_time(formatted = true)
     record = records.last
-    time = 0
+    time = record.event == 'TRANSFER' ? record.data4.to_i : record.data2.to_i
+    time ||= 0
 
-    time = record.data4.to_i if %w(COMPLETEAGENT COMPLETECALLER TRANSFER).include? record.event
     formatted ? hour_format(time) : time
   end
 
